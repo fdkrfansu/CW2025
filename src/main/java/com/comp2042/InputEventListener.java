@@ -10,5 +10,11 @@ public interface InputEventListener {
 
     ViewData onRotateEvent(MoveEvent event);
 
+    void init();
+
+    void startGame();
+
+    void stopGame();
+
     void createNewGame();
 }

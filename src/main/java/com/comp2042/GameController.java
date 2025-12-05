@@ -5,6 +5,7 @@ public class GameController implements InputEventListener {
     private Board board = new SimpleBoard(25, 10);
 
     private final GuiController viewGuiController;
+    private final javafx.animation.Timeline timeLine;
 
     public GameController(GuiController c) {
         viewGuiController = c;
@@ -12,6 +13,26 @@ public class GameController implements InputEventListener {
         viewGuiController.setEventListener(this);
         viewGuiController.initGameView(board.getBoardMatrix(), board.getViewData());
         viewGuiController.bindScore(board.getScore().scoreProperty());
+
+        timeLine = new javafx.animation.Timeline(new javafx.animation.KeyFrame(
+                javafx.util.Duration.millis(400),
+                ae -> onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD))));
+        timeLine.setCycleCount(javafx.animation.Timeline.INDEFINITE);
+    }
+
+    @Override
+    public void init() {
+        startGame();
+    }
+
+    @Override
+    public void startGame() {
+        timeLine.play();
+    }
+
+    @Override
+    public void stopGame() {
+        timeLine.stop();
     }
 
     @Override
@@ -26,9 +47,11 @@ public class GameController implements InputEventListener {
             }
             if (board.createNewBrick()) {
                 viewGuiController.gameOver();
+                stopGame();
             }
 
             viewGuiController.refreshGameBackground(board.getBoardMatrix());
+            viewGuiController.refreshBrick(board.getViewData());
 
         } else {
             if (event.getEventSource() == EventSource.USER) {
@@ -56,10 +79,10 @@ public class GameController implements InputEventListener {
         return board.getViewData();
     }
 
-
     @Override
     public void createNewGame() {
         board.newGame();
         viewGuiController.refreshGameBackground(board.getBoardMatrix());
+        startGame();
     }
 }
