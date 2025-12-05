@@ -73,6 +73,16 @@ public class GuiController implements Initializable {
                     }
                 }
 
+                if (keyEvent.getCode() == KeyCode.ESCAPE && isGameOver.getValue() == Boolean.FALSE) {
+                    if (isPause.getValue() == Boolean.FALSE) {
+                        isPause.setValue(Boolean.TRUE);
+                        eventListener.stopGame();
+                    } else {
+                        isPause.setValue(Boolean.FALSE);
+                        eventListener.startGame();
+                    }
+                }
+
                 if (keyEvent.getCode() == KeyCode.N) {
                     newGame(null);
                 }
