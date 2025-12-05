@@ -7,29 +7,29 @@ public class ColorMapper {
 
     public static Paint getFillColor(int i) {
         Paint returnPaint;
-        switch (i) {
-            case 0:
+        switch (BrickType.fromValue(i)) {
+            case NONE:
                 returnPaint = Color.TRANSPARENT;
                 break;
-            case 1:
+            case I:
                 returnPaint = Color.AQUA;
                 break;
-            case 2:
+            case J:
                 returnPaint = Color.BLUEVIOLET;
                 break;
-            case 3:
+            case L:
                 returnPaint = Color.DARKGREEN;
                 break;
-            case 4:
+            case O:
                 returnPaint = Color.YELLOW;
                 break;
-            case 5:
+            case S:
                 returnPaint = Color.RED;
                 break;
-            case 6:
+            case T:
                 returnPaint = Color.BEIGE;
                 break;
-            case 7:
+            case Z:
                 returnPaint = Color.BURLYWOOD;
                 break;
             default:

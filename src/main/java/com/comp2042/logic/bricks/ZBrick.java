@@ -10,17 +10,18 @@ final class ZBrick implements Brick {
     private final List<int[][]> brickMatrix = new ArrayList<>();
 
     public ZBrick() {
-        brickMatrix.add(new int[][]{
-                {0, 0, 0, 0},
-                {7, 7, 0, 0},
-                {0, 7, 7, 0},
-                {0, 0, 0, 0}
+        int v = com.comp2042.BrickType.Z.getValue();
+        brickMatrix.add(new int[][] {
+                { 0, 0, 0, 0 },
+                { v, v, 0, 0 },
+                { 0, v, v, 0 },
+                { 0, 0, 0, 0 }
         });
-        brickMatrix.add(new int[][]{
-                {0, 7, 0, 0},
-                {7, 7, 0, 0},
-                {7, 0, 0, 0},
-                {0, 0, 0, 0}
+        brickMatrix.add(new int[][] {
+                { 0, v, 0, 0 },
+                { v, v, 0, 0 },
+                { v, 0, 0, 0 },
+                { 0, 0, 0, 0 }
         });
     }
 

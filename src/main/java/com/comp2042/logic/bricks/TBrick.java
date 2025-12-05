@@ -7,37 +7,38 @@ import java.util.List;
 
 final class TBrick implements Brick {
 
-    private final List<int[][]> brickMatrix = new ArrayList<>();
+        private final List<int[][]> brickMatrix = new ArrayList<>();
 
-    public TBrick() {
-        brickMatrix.add(new int[][]{
-                {0, 0, 0, 0},
-                {6, 6, 6, 0},
-                {0, 6, 0, 0},
-                {0, 0, 0, 0}
-        });
-        brickMatrix.add(new int[][]{
-                {0, 6, 0, 0},
-                {0, 6, 6, 0},
-                {0, 6, 0, 0},
-                {0, 0, 0, 0}
-        });
-        brickMatrix.add(new int[][]{
-                {0, 6, 0, 0},
-                {6, 6, 6, 0},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0}
-        });
-        brickMatrix.add(new int[][]{
-                {0, 6, 0, 0},
-                {6, 6, 0, 0},
-                {0, 6, 0, 0},
-                {0, 0, 0, 0}
-        });
-    }
+        public TBrick() {
+                int v = com.comp2042.BrickType.T.getValue();
+                brickMatrix.add(new int[][] {
+                                { 0, 0, 0, 0 },
+                                { v, v, v, 0 },
+                                { 0, v, 0, 0 },
+                                { 0, 0, 0, 0 }
+                });
+                brickMatrix.add(new int[][] {
+                                { 0, v, 0, 0 },
+                                { 0, v, v, 0 },
+                                { 0, v, 0, 0 },
+                                { 0, 0, 0, 0 }
+                });
+                brickMatrix.add(new int[][] {
+                                { 0, v, 0, 0 },
+                                { v, v, v, 0 },
+                                { 0, 0, 0, 0 },
+                                { 0, 0, 0, 0 }
+                });
+                brickMatrix.add(new int[][] {
+                                { 0, v, 0, 0 },
+                                { v, v, 0, 0 },
+                                { 0, v, 0, 0 },
+                                { 0, 0, 0, 0 }
+                });
+        }
 
-    @Override
-    public List<int[][]> getShapeMatrix() {
-        return MatrixOperations.deepCopyList(brickMatrix);
-    }
+        @Override
+        public List<int[][]> getShapeMatrix() {
+                return MatrixOperations.deepCopyList(brickMatrix);
+        }
 }

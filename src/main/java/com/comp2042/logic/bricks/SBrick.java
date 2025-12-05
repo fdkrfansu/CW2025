@@ -10,17 +10,18 @@ final class SBrick implements Brick {
     private final List<int[][]> brickMatrix = new ArrayList<>();
 
     public SBrick() {
-        brickMatrix.add(new int[][]{
-                {0, 0, 0, 0},
-                {0, 5, 5, 0},
-                {5, 5, 0, 0},
-                {0, 0, 0, 0}
+        int v = com.comp2042.BrickType.S.getValue();
+        brickMatrix.add(new int[][] {
+                { 0, 0, 0, 0 },
+                { 0, v, v, 0 },
+                { v, v, 0, 0 },
+                { 0, 0, 0, 0 }
         });
-        brickMatrix.add(new int[][]{
-                {5, 0, 0, 0},
-                {5, 5, 0, 0},
-                {0, 5, 0, 0},
-                {0, 0, 0, 0}
+        brickMatrix.add(new int[][] {
+                { v, 0, 0, 0 },
+                { v, v, 0, 0 },
+                { 0, v, 0, 0 },
+                { 0, 0, 0, 0 }
         });
     }
 
