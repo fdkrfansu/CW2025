@@ -16,7 +16,10 @@ public class GameController implements InputEventListener {
 
         timeLine = new javafx.animation.Timeline(new javafx.animation.KeyFrame(
                 javafx.util.Duration.millis(400),
-                ae -> onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD))));
+                ae -> {
+                    DownData data = onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD));
+                    viewGuiController.refreshBrick(data.getViewData());
+                }));
         timeLine.setCycleCount(javafx.animation.Timeline.INDEFINITE);
     }
 

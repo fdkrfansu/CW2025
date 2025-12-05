@@ -24,9 +24,9 @@ public class Main extends Application {
         Scene scene = new Scene(root, 300, 510);
         primaryStage.setScene(scene);
         primaryStage.show();
-        new GameController(c);
+        GameController gameController = new GameController(c);
+        gameController.init();
     }
-
 
     public static void main(String[] args) {
         launch(args);
