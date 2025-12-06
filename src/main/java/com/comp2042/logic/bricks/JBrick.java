@@ -19,9 +19,9 @@ final class JBrick implements Brick {
                 });
                 brickMatrix.add(new int[][] {
                                 { 0, 0, 0, 0 },
-                                { 0, v, v, 0 },
-                                { 0, v, 0, 0 },
-                                { 0, v, 0, 0 }
+                                { 0, 0, v, 0 },
+                                { 0, 0, v, 0 },
+                                { 0, v, v, 0 }
                 });
                 brickMatrix.add(new int[][] {
                                 { 0, 0, 0, 0 },
@@ -30,10 +30,10 @@ final class JBrick implements Brick {
                                 { 0, 0, 0, 0 }
                 });
                 brickMatrix.add(new int[][] {
-                                { 0, 0, v, 0 },
-                                { 0, 0, v, 0 },
+                                { 0, 0, 0, 0 },
                                 { 0, v, v, 0 },
-                                { 0, 0, 0, 0 }
+                                { 0, v, 0, 0 },
+                                { 0, v, 0, 0 }
                 });
         }
 

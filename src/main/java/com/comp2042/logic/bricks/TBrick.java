@@ -19,7 +19,7 @@ final class TBrick implements Brick {
                 });
                 brickMatrix.add(new int[][] {
                                 { 0, v, 0, 0 },
-                                { 0, v, v, 0 },
+                                { v, v, 0, 0 },
                                 { 0, v, 0, 0 },
                                 { 0, 0, 0, 0 }
                 });
@@ -31,7 +31,7 @@ final class TBrick implements Brick {
                 });
                 brickMatrix.add(new int[][] {
                                 { 0, v, 0, 0 },
-                                { v, v, 0, 0 },
+                                { 0, v, v, 0 },
                                 { 0, v, 0, 0 },
                                 { 0, 0, 0, 0 }
                 });

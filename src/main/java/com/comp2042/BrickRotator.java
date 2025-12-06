@@ -9,7 +9,7 @@ public class BrickRotator {
 
     public NextShapeInfo getNextShape() {
         int nextShape = currentShape;
-        nextShape = (++nextShape) % brick.getShapeMatrix().size();
+        nextShape = (currentShape + 1) % brick.getShapeMatrix().size();
         return new NextShapeInfo(brick.getShapeMatrix().get(nextShape), nextShape);
     }
 
@@ -25,6 +25,5 @@ public class BrickRotator {
         this.brick = brick;
         currentShape = 0;
     }
-
 
 }
