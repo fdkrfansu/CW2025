@@ -192,7 +192,11 @@ public class GuiController implements Initializable {
         this.eventListener = eventListener;
     }
 
+    @FXML
+    private javafx.scene.control.Label scoreLabel;
+
     public void bindScore(IntegerProperty integerProperty) {
+        scoreLabel.textProperty().bind(integerProperty.asString());
     }
 
     public void gameOver() {
