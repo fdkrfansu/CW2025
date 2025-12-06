@@ -11,6 +11,7 @@ import javafx.scene.Group;
 import javafx.scene.effect.Reflection;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -35,6 +36,9 @@ public class GuiController implements Initializable {
 
     @FXML
     private GameOverPanel gameOverPanel;
+
+    @FXML
+    private PauseMenuScreen pauseMenuPanel;
 
     private Rectangle[][] displayMatrix;
 
@@ -76,9 +80,11 @@ public class GuiController implements Initializable {
                 if (keyEvent.getCode() == KeyCode.ESCAPE && isGameOver.getValue() == Boolean.FALSE) {
                     if (isPause.getValue() == Boolean.FALSE) {
                         isPause.setValue(Boolean.TRUE);
+                        pauseMenuPanel.setVisible(true);
                         eventListener.stopGame();
                     } else {
                         isPause.setValue(Boolean.FALSE);
+                        pauseMenuPanel.setVisible(false);
                         eventListener.startGame();
                     }
                 }
@@ -90,6 +96,17 @@ public class GuiController implements Initializable {
             }
         });
         gameOverPanel.setVisible(false);
+        pauseMenuPanel.setVisible(false);
+
+        pauseMenuPanel.setOnResume(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                isPause.setValue(Boolean.FALSE);
+                pauseMenuPanel.setVisible(false);
+                eventListener.startGame();
+                gamePanel.requestFocus();
+            }
+        });
 
         final Reflection reflection = new Reflection();
         reflection.setFraction(0.8);
