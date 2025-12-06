@@ -35,6 +35,9 @@ public class GuiController implements Initializable {
     private GridPane brickPanel;
 
     @FXML
+    private GridPane holdPanel;
+
+    @FXML
     private GameOverPanel gameOverPanel;
 
     @FXML
@@ -93,6 +96,11 @@ public class GuiController implements Initializable {
                     newGame(null);
                 }
 
+                if (keyEvent.getCode() == KeyCode.SHIFT) {
+                    refreshBrick(eventListener.onHoldEvent(new MoveEvent(EventType.DOWN, EventSource.USER)));
+                    keyEvent.consume();
+                }
+
             }
         });
         gameOverPanel.setVisible(false);
@@ -146,6 +154,21 @@ public class GuiController implements Initializable {
         brickPanel.setLayoutY(-42 + gamePanel.getLayoutY() + brick.getyPosition() * brickPanel.getHgap()
                 + brick.getyPosition() * BRICK_SIZE);
 
+        refreshHold(brick.getHeldBrickData());
+    }
+
+    private void refreshHold(int[][] holdData) {
+        holdPanel.getChildren().clear();
+        if (holdData == null) {
+            return;
+        }
+        for (int i = 0; i < holdData.length; i++) {
+            for (int j = 0; j < holdData[i].length; j++) {
+                Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
+                rectangle.setFill(ColorMapper.getFillColor(holdData[i][j]));
+                holdPanel.add(rectangle, j, i);
+            }
+        }
     }
 
     public void refreshBrick(ViewData brick) {
@@ -159,6 +182,7 @@ public class GuiController implements Initializable {
                     setRectangleStyle(brick.getBrickData()[i][j], rectangles[i][j]);
                 }
             }
+            refreshHold(brick.getHeldBrickData());
         }
     }
 

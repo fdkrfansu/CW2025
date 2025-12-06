@@ -86,6 +86,7 @@ public class SimpleBoard implements Board {
 
     @Override
     public boolean createNewBrick() {
+        canHold = true;
         Brick currentBrick = brickGenerator.getBrick();
         brickRotator.setBrick(currentBrick);
         currentOffset = new Point(4, 0);
@@ -101,7 +102,7 @@ public class SimpleBoard implements Board {
     @Override
     public ViewData getViewData() {
         return new ViewData(brickRotator.getCurrentShape(), (int) currentOffset.getX(), (int) currentOffset.getY(),
-                brickGenerator.getNextBrick().getShapeMatrix().get(0));
+                brickGenerator.getNextBrick().getShapeMatrix().get(0), getHeldBrickData());
     }
 
     @Override
@@ -127,6 +128,37 @@ public class SimpleBoard implements Board {
     public void newGame() {
         currentGameMatrix = new int[width][height];
         score.reset();
+        heldBrick = null;
         createNewBrick();
+    }
+
+    private Brick heldBrick;
+    private boolean canHold = true;
+
+    @Override
+    public boolean holdBrick() {
+        if (!canHold) {
+            return false;
+        }
+
+        Brick current = brickRotator.getBrick();
+        if (heldBrick == null) {
+            heldBrick = current;
+            createNewBrick();
+        } else {
+            Brick temp = heldBrick;
+            heldBrick = current;
+            brickRotator.setBrick(temp);
+            currentOffset = new Point(4, 0);
+        }
+        canHold = false;
+        return true;
+    }
+
+    public int[][] getHeldBrickData() {
+        if (heldBrick == null) {
+            return null;
+        }
+        return heldBrick.getShapeMatrix().get(0);
     }
 }

@@ -22,5 +22,7 @@ public interface Board {
 
     Score getScore();
 
+    boolean holdBrick();
+
     void newGame();
 }

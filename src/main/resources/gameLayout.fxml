@@ -10,9 +10,15 @@
 
 <StackPane fx:controller="com.comp2042.GuiController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" style="-fx-background-color: gray;">
     <HBox alignment="CENTER" spacing="20">
-        <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
-            <Label text="SCORE" textFill="WHITE" style="-fx-font-size: 20px;"/>
-            <Label fx:id="scoreLabel" text="0" textFill="WHITE" style="-fx-font-size: 30px;"/>
+        <VBox spacing="20" alignment="CENTER">
+            <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+                <Label text="SCORE" textFill="WHITE" style="-fx-font-size: 20px;"/>
+                <Label fx:id="scoreLabel" text="0" textFill="WHITE" style="-fx-font-size: 30px;"/>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+                 <Label text="HOLD" textFill="WHITE" style="-fx-font-size: 20px;"/>
+                 <GridPane fx:id="holdPanel" vgap="1" hgap="1" alignment="CENTER"/>
+            </VBox>
         </VBox>
         <Pane prefWidth="300" prefHeight="510" maxWidth="300" maxHeight="510">
             <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
