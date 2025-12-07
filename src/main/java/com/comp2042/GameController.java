@@ -8,7 +8,7 @@ public class GameController implements InputEventListener {
     private final javafx.animation.Timeline timeLine;
 
     private int lastScoreCheck = 0;
-    private double currentAnimateSpeed = 600.0;
+    private double currentAnimateSpeed = 800.0;
 
     public GameController(GuiController c) {
         viewGuiController = c;
@@ -115,7 +115,7 @@ public class GameController implements InputEventListener {
     public void createNewGame() {
         board.newGame();
         lastScoreCheck = 0;
-        currentAnimateSpeed = 600.0;
+        currentAnimateSpeed = 800.0;
         timeLine.stop();
         timeLine.getKeyFrames().clear();
         timeLine.getKeyFrames().add(new javafx.animation.KeyFrame(
@@ -132,7 +132,7 @@ public class GameController implements InputEventListener {
         int score = board.getScore().scoreProperty().getValue();
         if (score >= lastScoreCheck + 500) {
             lastScoreCheck += 500;
-            currentAnimateSpeed = Math.max(50, currentAnimateSpeed - 50); // Decrease delay by 50ms
+            currentAnimateSpeed = Math.max(50, currentAnimateSpeed - 25); // Decrease delay by 25ms
 
             timeLine.stop();
             timeLine.getKeyFrames().clear();
@@ -143,8 +143,6 @@ public class GameController implements InputEventListener {
                         viewGuiController.refreshBrick(data.getViewData());
                     }));
             timeLine.play();
-
-            System.out.println("Speed increased! New Delay: " + currentAnimateSpeed);
         }
     }
 }
