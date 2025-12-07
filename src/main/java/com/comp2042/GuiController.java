@@ -137,6 +137,13 @@ public class GuiController implements Initializable {
             }
         });
 
+        gameOverPanel.setOnNewGame(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                newGame(null);
+            }
+        });
+
         final Reflection reflection = new Reflection();
         reflection.setFraction(0.8);
         reflection.setTopOpacity(0.9);
