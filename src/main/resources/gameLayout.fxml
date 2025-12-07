@@ -13,13 +13,15 @@
 <StackPane fx:controller="com.comp2042.GuiController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" style="-fx-background-color: gray;">
     <HBox fx:id="gameArea" alignment="CENTER" spacing="20">
         <VBox spacing="20" alignment="CENTER">
-            <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+            <VBox alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
                 <Label text="SCORE" textFill="WHITE" style="-fx-font-size: 20px;"/>
                 <Label fx:id="scoreLabel" text="0" textFill="WHITE" style="-fx-font-size: 30px;"/>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+            <VBox fx:id="groupHold" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
                  <Label text="HOLD" textFill="WHITE" style="-fx-font-size: 20px;"/>
-                 <GridPane fx:id="holdPanel" vgap="1" hgap="1" alignment="CENTER"/>
+                 <StackPane VBox.vgrow="ALWAYS" alignment="CENTER">
+                     <GridPane fx:id="holdPanel" vgap="1" hgap="1" alignment="CENTER"/>
+                 </StackPane>
             </VBox>
         </VBox>
         <Pane prefWidth="300" prefHeight="510" maxWidth="300" maxHeight="510">
@@ -38,9 +40,11 @@
             </Group>
         </Pane>
         <VBox spacing="20" alignment="CENTER" style="-fx-padding: 0 0 0 -70;">
-            <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+            <VBox fx:id="groupNext" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
                  <Label text="NEXT" textFill="WHITE" style="-fx-font-size: 20px;"/>
-                 <GridPane fx:id="nextPanel" vgap="1" hgap="1" alignment="CENTER"/>
+                 <StackPane VBox.vgrow="ALWAYS" alignment="CENTER">
+                     <GridPane fx:id="nextPanel" vgap="1" hgap="1" alignment="CENTER"/>
+                 </StackPane>
             </VBox>
         </VBox>
     </HBox>

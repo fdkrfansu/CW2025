@@ -173,7 +173,10 @@ public class GuiController implements Initializable {
         gameOverPanel.setOnExit(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.exit(0);
+                isGameOver.setValue(Boolean.FALSE);
+                gameOverPanel.setVisible(false);
+                gameArea.setVisible(false);
+                mainMenuPanel.setVisible(true);
             }
         });
 

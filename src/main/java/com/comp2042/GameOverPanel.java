@@ -18,11 +18,11 @@ public class GameOverPanel extends BorderPane {
         gameOverLabel.getStyleClass().add("gameOverStyle");
 
         newGameButton = new Button("New Game");
-        newGameButton.setPrefWidth(120);
+        newGameButton.setPrefWidth(180);
         newGameButton.setPrefHeight(40);
 
-        exitButton = new Button("Exit");
-        exitButton.setPrefWidth(120);
+        exitButton = new Button("Exit to Main Menu");
+        exitButton.setPrefWidth(180);
         exitButton.setPrefHeight(40);
 
         VBox vbox = new VBox(20);
