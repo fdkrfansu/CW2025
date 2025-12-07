@@ -35,6 +35,12 @@
                 </VBox>
             </Group>
         </Pane>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 0 0 0 -70;">
+            <VBox alignment="CENTER" maxHeight="100" prefWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+                 <Label text="NEXT" textFill="WHITE" style="-fx-font-size: 20px;"/>
+                 <GridPane fx:id="nextPanel" vgap="1" hgap="1" alignment="CENTER"/>
+            </VBox>
+        </VBox>
     </HBox>
     <stylesheets>
         <URL value="@window_style.css"/>

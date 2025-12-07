@@ -38,6 +38,9 @@ public class GuiController implements Initializable {
     private GridPane holdPanel;
 
     @FXML
+    private GridPane nextPanel;
+
+    @FXML
     private GameOverPanel gameOverPanel;
 
     @FXML
@@ -183,6 +186,7 @@ public class GuiController implements Initializable {
                 + brick.getyPosition() * BRICK_SIZE);
 
         refreshHold(brick.getHeldBrickData());
+        refreshNext(brick.getNextBrickData());
     }
 
     private void refreshHold(int[][] holdData) {
@@ -199,6 +203,20 @@ public class GuiController implements Initializable {
         }
     }
 
+    private void refreshNext(int[][] nextData) {
+        nextPanel.getChildren().clear();
+        if (nextData == null) {
+            return;
+        }
+        for (int i = 0; i < nextData.length; i++) {
+            for (int j = 0; j < nextData[i].length; j++) {
+                Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
+                rectangle.setFill(ColorMapper.getFillColor(nextData[i][j]));
+                nextPanel.add(rectangle, j, i);
+            }
+        }
+    }
+
     public void refreshBrick(ViewData brick) {
         if (isPause.getValue() == Boolean.FALSE) {
             brickPanel.setLayoutX(gamePanel.getLayoutX() + brick.getxPosition() * brickPanel.getVgap()
@@ -211,6 +229,7 @@ public class GuiController implements Initializable {
                 }
             }
             refreshHold(brick.getHeldBrickData());
+            refreshNext(brick.getNextBrickData());
         }
     }
 
