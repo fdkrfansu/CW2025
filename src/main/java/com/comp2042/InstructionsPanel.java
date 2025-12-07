@@ -14,25 +14,25 @@ public class InstructionsPanel extends BorderPane {
 
     public InstructionsPanel() {
         final Label titleLabel = new Label("CONTROLS");
-        titleLabel.setStyle("-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;");
+        titleLabel.setStyle("-fx-font-size: 32px; -fx-text-fill: white; -fx-font-weight: bold;");
 
         final Label controls = new Label(
-                "↑ / W = Rotate clockwise\n" +
-                        "← / A = Move left\n" +
-                        "→ / D = Move right\n" +
-                        "↓ / S = Faster drop\n" +
-                        "SPACE = Hard drop\n" +
-                        "SHIFT = Hold/Replace block\n" +
-                        "ESC = Pause\n" +
-                        "N = New game");
-        controls.setStyle("-fx-font-size: 14px; -fx-text-fill: white; -fx-text-alignment: left;");
+                "• ↑ / W - Rotate\n" +
+                        "• ← / A - Move Left\n" +
+                        "• → / D - Move Right\n" +
+                        "• ↓ / S - Drop Faster\n" +
+                        "• SPACE - Hard Drop\n" +
+                        "• SHIFT - Hold Block\n" +
+                        "• ESC - Pause\n" +
+                        "• N - New Game");
+        controls.setStyle("-fx-font-size: 18px; -fx-text-fill: white;");
 
         backButton = new Button("Back");
-        backButton.setPrefWidth(120);
-        backButton.setPrefHeight(40);
-        backButton.setStyle("-fx-font-size: 16px;");
+        backButton.setPrefWidth(150);
+        backButton.setPrefHeight(50);
+        backButton.setStyle("-fx-font-size: 20px;");
 
-        VBox vbox = new VBox(15);
+        VBox vbox = new VBox(30);
         vbox.setAlignment(Pos.CENTER);
         vbox.getChildren().addAll(titleLabel, controls, backButton);
 

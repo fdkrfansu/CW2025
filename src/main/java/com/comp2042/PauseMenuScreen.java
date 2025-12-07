@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 public class PauseMenuScreen extends BorderPane {
 
     private final Button resumeButton;
+    private final Button controlsButton;
     private final Button exitButton;
 
     public PauseMenuScreen() {
@@ -17,13 +18,17 @@ public class PauseMenuScreen extends BorderPane {
         resumeButton.setPrefWidth(100);
         resumeButton.setPrefHeight(40);
 
+        controlsButton = new Button("Controls");
+        controlsButton.setPrefWidth(100);
+        controlsButton.setPrefHeight(40);
+
         exitButton = new Button("Exit");
         exitButton.setPrefWidth(100);
         exitButton.setPrefHeight(40);
 
         VBox vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().addAll(resumeButton, exitButton);
+        vbox.getChildren().addAll(resumeButton, controlsButton, exitButton);
 
         setCenter(vbox);
         setStyle("-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10;");
@@ -31,6 +36,10 @@ public class PauseMenuScreen extends BorderPane {
 
     public void setOnResume(EventHandler<MouseEvent> handler) {
         resumeButton.setOnMouseClicked(handler);
+    }
+
+    public void setOnControls(EventHandler<MouseEvent> handler) {
+        controlsButton.setOnMouseClicked(handler);
     }
 
     public void setOnExit(EventHandler<MouseEvent> handler) {

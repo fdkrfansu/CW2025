@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 public class MainMenuPanel extends BorderPane {
 
     private final Button playButton;
+    private final Button controlsButton;
     private final Button exitButton;
 
     public MainMenuPanel() {
@@ -22,6 +23,11 @@ public class MainMenuPanel extends BorderPane {
         playButton.setPrefHeight(50);
         playButton.setStyle("-fx-font-size: 20px;");
 
+        controlsButton = new Button("Controls");
+        controlsButton.setPrefWidth(150);
+        controlsButton.setPrefHeight(50);
+        controlsButton.setStyle("-fx-font-size: 20px;");
+
         exitButton = new Button("Exit");
         exitButton.setPrefWidth(150);
         exitButton.setPrefHeight(50);
@@ -29,7 +35,7 @@ public class MainMenuPanel extends BorderPane {
 
         VBox vbox = new VBox(30);
         vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().addAll(titleLabel, playButton, exitButton);
+        vbox.getChildren().addAll(titleLabel, playButton, controlsButton, exitButton);
 
         setCenter(vbox);
         setStyle("-fx-background-color: rgba(0, 0, 0, 0.9);");
@@ -37,6 +43,10 @@ public class MainMenuPanel extends BorderPane {
 
     public void setOnPlay(EventHandler<MouseEvent> handler) {
         playButton.setOnMouseClicked(handler);
+    }
+
+    public void setOnControls(EventHandler<MouseEvent> handler) {
+        controlsButton.setOnMouseClicked(handler);
     }
 
     public void setOnExit(EventHandler<MouseEvent> handler) {

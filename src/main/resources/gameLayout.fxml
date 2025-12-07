@@ -1,6 +1,7 @@
 <?import com.comp2042.GameOverPanel?>
 <?import com.comp2042.PauseMenuScreen?>
 <?import com.comp2042.MainMenuPanel?>
+<?import com.comp2042.InstructionsPanel?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
@@ -44,6 +45,7 @@
         </VBox>
     </HBox>
     <MainMenuPanel fx:id="mainMenuPanel"/>
+    <InstructionsPanel fx:id="instructionsPanel"/>
     <stylesheets>
         <URL value="@window_style.css"/>
     </stylesheets>

@@ -50,6 +50,9 @@ public class GuiController implements Initializable {
     private MainMenuPanel mainMenuPanel;
 
     @FXML
+    private InstructionsPanel instructionsPanel;
+
+    @FXML
     private javafx.scene.layout.HBox gameArea;
 
     private Rectangle[][] displayMatrix;
@@ -129,6 +132,7 @@ public class GuiController implements Initializable {
         gameOverPanel.setVisible(false);
         pauseMenuPanel.setVisible(false);
         mainMenuPanel.setVisible(true);
+        instructionsPanel.setVisible(false);
         gameArea.setVisible(false);
 
         pauseMenuPanel.setOnResume(new EventHandler<MouseEvent>() {
@@ -145,6 +149,14 @@ public class GuiController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 System.exit(0);
+            }
+        });
+
+        pauseMenuPanel.setOnControls(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                pauseMenuPanel.setVisible(false);
+                instructionsPanel.setVisible(true);
             }
         });
 
@@ -176,6 +188,26 @@ public class GuiController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 System.exit(0);
+            }
+        });
+
+        mainMenuPanel.setOnControls(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mainMenuPanel.setVisible(false);
+                instructionsPanel.setVisible(true);
+            }
+        });
+
+        instructionsPanel.setOnBack(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                instructionsPanel.setVisible(false);
+                if (isPause.getValue()) {
+                    pauseMenuPanel.setVisible(true);
+                } else {
+                    mainMenuPanel.setVisible(true);
+                }
             }
         });
 
