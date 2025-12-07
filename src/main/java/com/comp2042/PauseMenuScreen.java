@@ -15,15 +15,15 @@ public class PauseMenuScreen extends BorderPane {
 
     public PauseMenuScreen() {
         resumeButton = new Button("Resume");
-        resumeButton.setPrefWidth(100);
+        resumeButton.setPrefWidth(180);
         resumeButton.setPrefHeight(40);
 
         controlsButton = new Button("Controls");
-        controlsButton.setPrefWidth(100);
+        controlsButton.setPrefWidth(180);
         controlsButton.setPrefHeight(40);
 
-        exitButton = new Button("Exit");
-        exitButton.setPrefWidth(100);
+        exitButton = new Button("Exit to Main Menu");
+        exitButton.setPrefWidth(180);
         exitButton.setPrefHeight(40);
 
         VBox vbox = new VBox(10);

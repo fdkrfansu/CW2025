@@ -148,7 +148,10 @@ public class GuiController implements Initializable {
         pauseMenuPanel.setOnExit(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.exit(0);
+                isPause.setValue(Boolean.FALSE);
+                pauseMenuPanel.setVisible(false);
+                gameArea.setVisible(false);
+                mainMenuPanel.setVisible(true);
             }
         });
 
@@ -179,7 +182,7 @@ public class GuiController implements Initializable {
             public void handle(MouseEvent mouseEvent) {
                 mainMenuPanel.setVisible(false);
                 gameArea.setVisible(true);
-                eventListener.startGame();
+                eventListener.createNewGame();
                 gamePanel.requestFocus();
             }
         });
