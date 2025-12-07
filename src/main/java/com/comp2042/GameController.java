@@ -25,7 +25,7 @@ public class GameController implements InputEventListener {
 
     @Override
     public void init() {
-        startGame();
+        // Game will start when user clicks Play button
     }
 
     @Override

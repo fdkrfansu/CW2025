@@ -46,6 +46,12 @@ public class GuiController implements Initializable {
     @FXML
     private PauseMenuScreen pauseMenuPanel;
 
+    @FXML
+    private MainMenuPanel mainMenuPanel;
+
+    @FXML
+    private javafx.scene.layout.HBox gameArea;
+
     private Rectangle[][] displayMatrix;
 
     private InputEventListener eventListener;
@@ -122,6 +128,8 @@ public class GuiController implements Initializable {
         });
         gameOverPanel.setVisible(false);
         pauseMenuPanel.setVisible(false);
+        mainMenuPanel.setVisible(true);
+        gameArea.setVisible(false);
 
         pauseMenuPanel.setOnResume(new EventHandler<MouseEvent>() {
             @Override
@@ -148,6 +156,23 @@ public class GuiController implements Initializable {
         });
 
         gameOverPanel.setOnExit(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.exit(0);
+            }
+        });
+
+        mainMenuPanel.setOnPlay(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mainMenuPanel.setVisible(false);
+                gameArea.setVisible(true);
+                eventListener.startGame();
+                gamePanel.requestFocus();
+            }
+        });
+
+        mainMenuPanel.setOnExit(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 System.exit(0);
