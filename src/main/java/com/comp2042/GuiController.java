@@ -60,6 +60,7 @@ public class GuiController implements Initializable {
     private InputEventListener eventListener;
 
     private Rectangle[][] rectangles;
+    private Rectangle[][] ghostRectangles;
 
     private final BooleanProperty isPause = new SimpleBooleanProperty();
 
@@ -243,6 +244,22 @@ public class GuiController implements Initializable {
                 brickPanel.add(rectangle, j, i);
             }
         }
+
+        // Initialize ghost pieces
+        ghostRectangles = new Rectangle[brick.getBrickData().length][brick.getBrickData()[0].length];
+        for (int i = 0; i < brick.getBrickData().length; i++) {
+            for (int j = 0; j < brick.getBrickData()[i].length; j++) {
+                Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
+                rectangle.setFill(Color.TRANSPARENT);
+                rectangle.setStyle("-fx-stroke: white; -fx-stroke-width: 1; -fx-stroke-type: inside;");
+                rectangle.getStyleClass().add("ghost-brick");
+                rectangle.setVisible(false);
+                ghostRectangles[i][j] = rectangle;
+                // Add to panel at safe index 0,0, visibility toggled in refreshBrick
+                gamePanel.add(rectangle, j, 0);
+            }
+        }
+
         brickPanel.setLayoutX(gamePanel.getLayoutX() + brick.getxPosition() * brickPanel.getVgap()
                 + brick.getxPosition() * BRICK_SIZE);
         brickPanel.setLayoutY(-42 + gamePanel.getLayoutY() + brick.getyPosition() * brickPanel.getHgap()
@@ -289,6 +306,20 @@ public class GuiController implements Initializable {
             for (int i = 0; i < brick.getBrickData().length; i++) {
                 for (int j = 0; j < brick.getBrickData()[i].length; j++) {
                     setRectangleStyle(brick.getBrickData()[i][j], rectangles[i][j]);
+
+                    // Update ghost pieces
+                    if (brick.getBrickData()[i][j] != 0 && ghostRectangles != null) {
+                        int ghostRow = brick.getGhostY() + i - 2;
+                        if (ghostRow >= 0) {
+                            ghostRectangles[i][j].setVisible(true);
+                            GridPane.setColumnIndex(ghostRectangles[i][j], brick.getxPosition() + j);
+                            GridPane.setRowIndex(ghostRectangles[i][j], ghostRow);
+                        } else {
+                            ghostRectangles[i][j].setVisible(false);
+                        }
+                    } else if (ghostRectangles != null) {
+                        ghostRectangles[i][j].setVisible(false);
+                    }
                 }
             }
             refreshHold(brick.getHeldBrickData());

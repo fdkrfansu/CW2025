@@ -7,11 +7,14 @@ public final class ViewData {
     private final int yPosition;
     private final int[][] nextBrickData;
     private final int[][] heldBrickData;
+    private final int ghostY;
 
-    public ViewData(int[][] brickData, int xPosition, int yPosition, int[][] nextBrickData, int[][] heldBrickData) {
+    public ViewData(int[][] brickData, int xPosition, int yPosition, int ghostY, int[][] nextBrickData,
+            int[][] heldBrickData) {
         this.brickData = brickData;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        this.ghostY = ghostY;
         this.nextBrickData = nextBrickData;
         this.heldBrickData = heldBrickData;
     }
@@ -26,6 +29,10 @@ public final class ViewData {
 
     public int getyPosition() {
         return yPosition;
+    }
+
+    public int getGhostY() {
+        return ghostY;
     }
 
     public int[][] getNextBrickData() {
