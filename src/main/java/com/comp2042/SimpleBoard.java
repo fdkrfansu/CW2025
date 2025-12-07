@@ -155,6 +155,12 @@ public class SimpleBoard implements Board {
         return true;
     }
 
+    @Override
+    public void dropBrick() {
+        while (moveBrickDown()) {
+        }
+    }
+
     public int[][] getHeldBrickData() {
         if (heldBrick == null) {
             return null;

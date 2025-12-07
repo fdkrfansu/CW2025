@@ -71,6 +71,23 @@ public class GameController implements InputEventListener {
     }
 
     @Override
+    public DownData onHardDropEvent(MoveEvent event) {
+        board.dropBrick();
+        ClearRow clearRow = null;
+        board.mergeBrickToBackground();
+        clearRow = board.clearRows();
+        if (clearRow.getLinesRemoved() > 0) {
+            board.getScore().add(clearRow.getScoreBonus());
+        }
+        if (board.createNewBrick()) {
+            viewGuiController.gameOver();
+            stopGame();
+        }
+        viewGuiController.refreshGameBackground(board.getBoardMatrix());
+        return new DownData(clearRow, board.getViewData());
+    }
+
+    @Override
     public ViewData onLeftEvent(MoveEvent event) {
         board.moveBrickLeft();
         return board.getViewData();

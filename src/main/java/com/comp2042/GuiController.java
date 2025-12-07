@@ -96,8 +96,22 @@ public class GuiController implements Initializable {
                     newGame(null);
                 }
 
-                if (keyEvent.getCode() == KeyCode.SHIFT) {
+                if (keyEvent.getCode() == KeyCode.SHIFT && isPause.getValue() == Boolean.FALSE
+                        && isGameOver.getValue() == Boolean.FALSE) {
                     refreshBrick(eventListener.onHoldEvent(new MoveEvent(EventType.DOWN, EventSource.USER)));
+                    keyEvent.consume();
+                }
+
+                if (keyEvent.getCode() == KeyCode.SPACE && isPause.getValue() == Boolean.FALSE
+                        && isGameOver.getValue() == Boolean.FALSE) {
+                    DownData downData = eventListener.onHardDropEvent(new MoveEvent(EventType.DOWN, EventSource.USER));
+                    if (downData.getClearRow() != null && downData.getClearRow().getLinesRemoved() > 0) {
+                        NotificationPanel notificationPanel = new NotificationPanel(
+                                "+" + downData.getClearRow().getScoreBonus());
+                        groupNotification.getChildren().add(notificationPanel);
+                        notificationPanel.showScore(groupNotification.getChildren());
+                    }
+                    refreshBrick(downData.getViewData());
                     keyEvent.consume();
                 }
 
