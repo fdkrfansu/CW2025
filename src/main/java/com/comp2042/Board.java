@@ -27,4 +27,6 @@ public interface Board {
     void dropBrick();
 
     void newGame();
+
+    javafx.beans.property.IntegerProperty getLinesClearedProperty();
 }

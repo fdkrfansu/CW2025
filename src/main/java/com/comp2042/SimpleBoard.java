@@ -15,6 +15,8 @@ public class SimpleBoard implements Board {
     private int[][] currentGameMatrix;
     private Point currentOffset;
     private final Score score;
+    private final javafx.beans.property.IntegerProperty linesCleared = new javafx.beans.property.SimpleIntegerProperty(
+            0);
 
     public SimpleBoard(int width, int height) {
         this.width = width;
@@ -104,7 +106,7 @@ public class SimpleBoard implements Board {
         return new ViewData(brickRotator.getCurrentShape(), (int) currentOffset.getX(), (int) currentOffset.getY(),
                 getGhostY(), brickGenerator.getNextBrick().getShapeMatrix().get(0), getHeldBrickData());
     }
-    
+
     private int getGhostY() {
         int[][] currentMatrix = MatrixOperations.copy(currentGameMatrix);
         Point p = new Point(currentOffset);
@@ -128,8 +130,10 @@ public class SimpleBoard implements Board {
     public ClearRow clearRows() {
         ClearRow clearRow = MatrixOperations.checkRemoving(currentGameMatrix);
         currentGameMatrix = clearRow.getNewMatrix();
+        if (clearRow.getLinesRemoved() > 0) {
+            linesCleared.set(linesCleared.get() + clearRow.getLinesRemoved());
+        }
         return clearRow;
-
     }
 
     @Override
@@ -141,6 +145,7 @@ public class SimpleBoard implements Board {
     public void newGame() {
         currentGameMatrix = new int[width][height];
         score.reset();
+        linesCleared.set(0);
         heldBrick = null;
         createNewBrick();
     }
@@ -179,5 +184,10 @@ public class SimpleBoard implements Board {
             return null;
         }
         return heldBrick.getShapeMatrix().get(0);
+    }
+
+    @Override
+    public javafx.beans.property.IntegerProperty getLinesClearedProperty() {
+        return linesCleared;
     }
 }

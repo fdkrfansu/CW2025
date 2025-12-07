@@ -7,15 +7,19 @@ public class GameController implements InputEventListener {
     private final GuiController viewGuiController;
     private final javafx.animation.Timeline timeLine;
 
+    private int lastScoreCheck = 0;
+    private double currentAnimateSpeed = 600.0;
+
     public GameController(GuiController c) {
         viewGuiController = c;
         board.createNewBrick();
         viewGuiController.setEventListener(this);
         viewGuiController.initGameView(board.getBoardMatrix(), board.getViewData());
         viewGuiController.bindScore(board.getScore().scoreProperty());
+        viewGuiController.bindLinesCleared(board.getLinesClearedProperty());
 
         timeLine = new javafx.animation.Timeline(new javafx.animation.KeyFrame(
-                javafx.util.Duration.millis(400),
+                javafx.util.Duration.millis(currentAnimateSpeed),
                 ae -> {
                     DownData data = onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD));
                     viewGuiController.refreshBrick(data.getViewData());
@@ -47,6 +51,7 @@ public class GameController implements InputEventListener {
             clearRow = board.clearRows();
             if (clearRow.getLinesRemoved() > 0) {
                 board.getScore().add(clearRow.getScoreBonus());
+                updateGameSpeed();
             }
             if (board.createNewBrick()) {
                 viewGuiController.gameOver();
@@ -78,6 +83,7 @@ public class GameController implements InputEventListener {
         clearRow = board.clearRows();
         if (clearRow.getLinesRemoved() > 0) {
             board.getScore().add(clearRow.getScoreBonus());
+            updateGameSpeed();
         }
         if (board.createNewBrick()) {
             viewGuiController.gameOver();
@@ -108,7 +114,37 @@ public class GameController implements InputEventListener {
     @Override
     public void createNewGame() {
         board.newGame();
+        lastScoreCheck = 0;
+        currentAnimateSpeed = 600.0;
+        timeLine.stop();
+        timeLine.getKeyFrames().clear();
+        timeLine.getKeyFrames().add(new javafx.animation.KeyFrame(
+                javafx.util.Duration.millis(currentAnimateSpeed),
+                ae -> {
+                    DownData data = onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD));
+                    viewGuiController.refreshBrick(data.getViewData());
+                }));
         viewGuiController.refreshGameBackground(board.getBoardMatrix());
         startGame();
+    }
+
+    private void updateGameSpeed() {
+        int score = board.getScore().scoreProperty().getValue();
+        if (score >= lastScoreCheck + 500) {
+            lastScoreCheck += 500;
+            currentAnimateSpeed = Math.max(50, currentAnimateSpeed - 50); // Decrease delay by 50ms
+
+            timeLine.stop();
+            timeLine.getKeyFrames().clear();
+            timeLine.getKeyFrames().add(new javafx.animation.KeyFrame(
+                    javafx.util.Duration.millis(currentAnimateSpeed),
+                    ae -> {
+                        DownData data = onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD));
+                        viewGuiController.refreshBrick(data.getViewData());
+                    }));
+            timeLine.play();
+
+            System.out.println("Speed increased! New Delay: " + currentAnimateSpeed);
+        }
     }
 }

@@ -364,6 +364,13 @@ public class GuiController implements Initializable {
         scoreLabel.textProperty().bind(integerProperty.asString());
     }
 
+    @FXML
+    private javafx.scene.control.Label linesLabel;
+
+    public void bindLinesCleared(IntegerProperty integerProperty) {
+        linesLabel.textProperty().bind(integerProperty.asString());
+    }
+
     public void gameOver() {
         gameOverPanel.setVisible(true);
         isGameOver.setValue(Boolean.TRUE);
@@ -380,4 +387,5 @@ public class GuiController implements Initializable {
     public void pauseGame(ActionEvent actionEvent) {
         gamePanel.requestFocus();
     }
+
 }

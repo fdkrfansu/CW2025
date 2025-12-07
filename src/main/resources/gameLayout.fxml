@@ -23,6 +23,10 @@
                      <GridPane fx:id="holdPanel" vgap="1" hgap="1" alignment="CENTER"/>
                  </StackPane>
             </VBox>
+            <VBox fx:id="groupLines" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
+                 <Label text="LINES" textFill="WHITE" style="-fx-font-size: 20px;"/>
+                 <Label fx:id="linesLabel" text="0" textFill="WHITE" style="-fx-font-size: 30px;"/>
+            </VBox>
         </VBox>
         <Pane prefWidth="300" prefHeight="510" maxWidth="300" maxHeight="510">
             <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
