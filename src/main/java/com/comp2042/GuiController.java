@@ -144,6 +144,13 @@ public class GuiController implements Initializable {
             }
         });
 
+        gameOverPanel.setOnExit(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.exit(0);
+            }
+        });
+
         final Reflection reflection = new Reflection();
         reflection.setFraction(0.8);
         reflection.setTopOpacity(0.9);
