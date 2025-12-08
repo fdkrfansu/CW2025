@@ -52,6 +52,9 @@ public class GuiController implements Initializable {
     private InstructionsPanel instructionsPanel;
 
     @FXML
+    private javafx.scene.image.ImageView plateImage;
+
+    @FXML
     private javafx.scene.layout.HBox gameArea;
 
     private Rectangle[][] displayMatrix;
@@ -137,6 +140,7 @@ public class GuiController implements Initializable {
         mainMenuPanel.setVisible(true);
         instructionsPanel.setVisible(false);
         gameArea.setVisible(false);
+        plateImage.setVisible(false);
 
         pauseMenuPanel.setOnResume(new EventHandler<MouseEvent>() {
             @Override
@@ -154,7 +158,9 @@ public class GuiController implements Initializable {
                 isPause.setValue(Boolean.FALSE);
                 pauseMenuPanel.setVisible(false);
                 gameArea.setVisible(false);
+                plateImage.setVisible(false);
                 mainMenuPanel.setVisible(true);
+                SoundManager.getInstance().stopBackgroundMusic();
             }
         });
 
@@ -179,7 +185,9 @@ public class GuiController implements Initializable {
                 isGameOver.setValue(Boolean.FALSE);
                 gameOverPanel.setVisible(false);
                 gameArea.setVisible(false);
+                plateImage.setVisible(false);
                 mainMenuPanel.setVisible(true);
+                SoundManager.getInstance().stopBackgroundMusic();
             }
         });
 
@@ -188,8 +196,10 @@ public class GuiController implements Initializable {
             public void handle(MouseEvent mouseEvent) {
                 mainMenuPanel.setVisible(false);
                 gameArea.setVisible(true);
+                plateImage.setVisible(true);
                 eventListener.createNewGame();
                 gamePanel.requestFocus();
+                SoundManager.getInstance().playBackgroundMusic();
             }
         });
 
@@ -353,6 +363,9 @@ public class GuiController implements Initializable {
 
     private void handleClearRow(ClearRow clearRow) {
         if (clearRow != null && clearRow.getLinesRemoved() > 0) {
+            // Play sound effect
+            SoundManager.getInstance().playClearSound();
+
             NotificationPanel scoreNotification = new NotificationPanel("+" + clearRow.getScoreBonus());
             groupNotification.getChildren().add(scoreNotification);
             scoreNotification.showScore(groupNotification.getChildren());

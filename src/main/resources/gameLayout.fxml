@@ -14,30 +14,32 @@
 <?import java.net.URL?>
 
 <StackPane fx:controller="com.comp2042.GuiController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER">
+    <!-- Plate Background (Behind everything) -->
+    <ImageView fx:id="plateImage" fitWidth="500" fitHeight="500" preserveRatio="true">
+        <image>
+            <Image url="@black_plate.png"/>
+        </image>
+    </ImageView>
+
     <HBox fx:id="gameArea" alignment="CENTER" spacing="20">
         <VBox spacing="20" alignment="CENTER">
-            <VBox alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
-                <Label text="SCORE" textFill="#FFD700" style="-fx-font-size: 20px;"/>
-                <Label fx:id="scoreLabel" text="0" textFill="#FFD700" style="-fx-font-size: 30px;"/>
+            <VBox alignment="TOP_CENTER" minHeight="120" prefHeight="130" maxHeight="130" minWidth="180" prefWidth="180" maxWidth="180" style="-fx-border-color: #3E2723; -fx-border-width: 5; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                <Label text="TOTAL CALORIES" textFill="#FAF5E9" style="-fx-font-size: 19px;"/>
+                <Label fx:id="scoreLabel" text="0" textFill="#FAF5E9" style="-fx-font-size: 38px;"/>
             </VBox>
-            <VBox fx:id="groupHold" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
-                 <Label text="HOLD" textFill="#FFD700" style="-fx-font-size: 20px;"/>
+            <VBox fx:id="groupHold" alignment="TOP_CENTER" minHeight="120" prefHeight="130" maxHeight="130" minWidth="180" prefWidth="180" maxWidth="180" style="-fx-border-color: #3E2723; -fx-border-width: 5; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                 <Label text="HOLD" textFill="#FAF5E9" style="-fx-font-size: 24px;"/>
                  <StackPane VBox.vgrow="ALWAYS" alignment="CENTER">
                      <GridPane fx:id="holdPanel" vgap="1" hgap="1" alignment="CENTER"/>
                  </StackPane>
             </VBox>
-            <VBox fx:id="groupLines" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
-                 <Label text="LINES" textFill="#FFD700" style="-fx-font-size: 20px;"/>
-                 <Label fx:id="linesLabel" text="0" textFill="#FFD700" style="-fx-font-size: 30px;"/>
+            <VBox fx:id="groupLines" alignment="TOP_CENTER" minHeight="120" prefHeight="130" maxHeight="130" minWidth="180" prefWidth="180" maxWidth="180" style="-fx-border-color: #3E2723; -fx-border-width: 5; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                 <Label text="PLATES SERVED" textFill="#FAF5E9" style="-fx-font-size: 19px;"/>
+                 <Label fx:id="linesLabel" text="0" textFill="#FAF5E9" style="-fx-font-size: 38px;"/>
             </VBox>
         </VBox>
         <Pane prefWidth="300" prefHeight="510" maxWidth="300" maxHeight="510">
-            <!-- Plate -->
-            <ImageView fitWidth="500" fitHeight="500" layoutX="-100" layoutY="5" preserveRatio="true">
-                <image>
-                    <Image url="@black_plate.png"/>
-                </image>
-            </ImageView>
+            <!-- Plate moved to root StackPane -->
             
             <BorderPane styleClass="gameBoard" fx:id="gameBoard">
                 <center>
@@ -48,14 +50,13 @@
 
             <Group fx:id="groupNotification" layoutX="14" layoutY="203">
                 <VBox alignment="CENTER">
-                    <GameOverPanel fx:id="gameOverPanel"/>
-                    <PauseMenuScreen fx:id="pauseMenuPanel"/>
+                   <!-- Notification Score Popups will appear here -->
                 </VBox>
             </Group>
         </Pane>
         <VBox spacing="20" alignment="CENTER" style="-fx-padding: 0 0 0 -70;">
-            <VBox fx:id="groupNext" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
-                 <Label text="NEXT" textFill="#FFD700" style="-fx-font-size: 20px;"/>
+            <VBox fx:id="groupNext" alignment="TOP_CENTER" minHeight="120" prefHeight="130" maxHeight="130" minWidth="180" prefWidth="180" maxWidth="180" style="-fx-border-color: #3E2723; -fx-border-width: 5; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                 <Label text="NEXT" textFill="#FAF5E9" style="-fx-font-size: 24px;"/>
                  <StackPane VBox.vgrow="ALWAYS" alignment="CENTER">
                      <GridPane fx:id="nextPanel" vgap="1" hgap="1" alignment="CENTER"/>
                  </StackPane>
@@ -63,6 +64,8 @@
         </VBox>
     </HBox>
     <MainMenuPanel fx:id="mainMenuPanel"/>
+    <PauseMenuScreen fx:id="pauseMenuPanel"/>
+    <GameOverPanel fx:id="gameOverPanel"/>
     <InstructionsPanel fx:id="instructionsPanel"/>
     <stylesheets>
         <URL value="@window_style.css"/>

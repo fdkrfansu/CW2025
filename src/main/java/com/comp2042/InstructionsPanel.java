@@ -14,7 +14,8 @@ public class InstructionsPanel extends BorderPane {
 
     public InstructionsPanel() {
         final Label titleLabel = new Label("CONTROLS");
-        titleLabel.setStyle("-fx-font-size: 32px; -fx-text-fill: white; -fx-font-weight: bold;");
+        titleLabel.setStyle(
+                "-fx-font-family: 'VT323'; -fx-font-size: 60px; -fx-text-fill: white; -fx-font-weight: bold;");
 
         final Label controls = new Label(
                 "• ↑ / W - Rotate\n" +
@@ -26,12 +27,14 @@ public class InstructionsPanel extends BorderPane {
                         "• SHIFT - Hold Block\n" +
                         "• ESC - Pause\n" +
                         "• N - New Game");
-        controls.setStyle("-fx-font-size: 18px; -fx-text-fill: white;");
+        controls.setStyle("-fx-font-family: 'VT323'; -fx-font-size: 24px; -fx-text-fill: white;");
 
-        backButton = new Button("Back");
-        backButton.setPrefWidth(150);
-        backButton.setPrefHeight(50);
-        backButton.setStyle("-fx-font-size: 20px;");
+        backButton = new Button("BACK");
+        backButton.setPrefWidth(200);
+        backButton.setPrefHeight(60);
+        backButton.setStyle(
+                "-fx-font-family: 'VT323'; -fx-font-size: 30px; -fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;");
+        createHoverEffect(backButton);
 
         VBox vbox = new VBox(30);
         vbox.setAlignment(Pos.CENTER);
@@ -39,6 +42,21 @@ public class InstructionsPanel extends BorderPane {
 
         setCenter(vbox);
         setStyle("-fx-background-color: rgba(0, 0, 0, 0.9);");
+    }
+
+    private void createHoverEffect(Button button) {
+        button.setOnMouseEntered(e -> {
+            button.setScaleX(1.1);
+            button.setScaleY(1.1);
+            button.setStyle(
+                    "-fx-font-family: 'VT323'; -fx-font-size: 30px; -fx-background-color: #333333; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;");
+        });
+        button.setOnMouseExited(e -> {
+            button.setScaleX(1.0);
+            button.setScaleY(1.0);
+            button.setStyle(
+                    "-fx-font-family: 'VT323'; -fx-font-size: 30px; -fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2px;");
+        });
     }
 
     public void setOnBack(EventHandler<MouseEvent> handler) {

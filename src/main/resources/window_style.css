@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'VT323';
-    src: url('VT323.ttf');
-}
-
 .root {
     -fx-font-family: 'VT323', 'Digital-7', monospace;
     -fx-background-image: url("ayam_gepuk_bg.png");
