@@ -12,25 +12,25 @@ public class ColorMapper {
                 returnPaint = Color.TRANSPARENT;
                 break;
             case I:
-                returnPaint = Color.AQUA;
+                returnPaint = Color.web("#FFD700"); // Tofu/Tempeh (Gold)
                 break;
             case J:
-                returnPaint = Color.BLUEVIOLET;
+                returnPaint = Color.web("#B22222"); // Spicy (Dark Red)
                 break;
             case L:
-                returnPaint = Color.DARKGREEN;
+                returnPaint = Color.web("#FF4500"); // Sambal (Orange Red)
                 break;
             case O:
-                returnPaint = Color.YELLOW;
+                returnPaint = Color.web("#FAF5E9"); // Rice (White)
                 break;
             case S:
-                returnPaint = Color.RED;
+                returnPaint = Color.web("#FF0000"); // Chili (Red)
                 break;
             case T:
-                returnPaint = Color.BEIGE;
+                returnPaint = Color.web("#8B4513"); // Fried Chicken (Saddle Brown)
                 break;
             case Z:
-                returnPaint = Color.BURLYWOOD;
+                returnPaint = Color.web("#32CD32"); // Cucumber/Cabbage (Lime Green)
                 break;
             default:
                 returnPaint = Color.WHITE;

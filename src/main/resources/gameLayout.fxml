@@ -8,33 +8,43 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
 <?import java.net.URL?>
 
-<StackPane fx:controller="com.comp2042.GuiController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" style="-fx-background-color: gray;">
+<StackPane fx:controller="com.comp2042.GuiController" xmlns:fx="http://javafx.com/fxml" alignment="CENTER">
     <HBox fx:id="gameArea" alignment="CENTER" spacing="20">
         <VBox spacing="20" alignment="CENTER">
-            <VBox alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
-                <Label text="SCORE" textFill="WHITE" style="-fx-font-size: 20px;"/>
-                <Label fx:id="scoreLabel" text="0" textFill="WHITE" style="-fx-font-size: 30px;"/>
+            <VBox alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                <Label text="SCORE" textFill="#FFD700" style="-fx-font-size: 20px;"/>
+                <Label fx:id="scoreLabel" text="0" textFill="#FFD700" style="-fx-font-size: 30px;"/>
             </VBox>
-            <VBox fx:id="groupHold" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
-                 <Label text="HOLD" textFill="WHITE" style="-fx-font-size: 20px;"/>
+            <VBox fx:id="groupHold" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                 <Label text="HOLD" textFill="#FFD700" style="-fx-font-size: 20px;"/>
                  <StackPane VBox.vgrow="ALWAYS" alignment="CENTER">
                      <GridPane fx:id="holdPanel" vgap="1" hgap="1" alignment="CENTER"/>
                  </StackPane>
             </VBox>
-            <VBox fx:id="groupLines" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
-                 <Label text="LINES" textFill="WHITE" style="-fx-font-size: 20px;"/>
-                 <Label fx:id="linesLabel" text="0" textFill="WHITE" style="-fx-font-size: 30px;"/>
+            <VBox fx:id="groupLines" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                 <Label text="LINES" textFill="#FFD700" style="-fx-font-size: 20px;"/>
+                 <Label fx:id="linesLabel" text="0" textFill="#FFD700" style="-fx-font-size: 30px;"/>
             </VBox>
         </VBox>
         <Pane prefWidth="300" prefHeight="510" maxWidth="300" maxHeight="510">
-            <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
+            <!-- Plate -->
+            <ImageView fitWidth="500" fitHeight="500" layoutX="-100" layoutY="5" preserveRatio="true">
+                <image>
+                    <Image url="@black_plate.png"/>
+                </image>
+            </ImageView>
+            
             <BorderPane styleClass="gameBoard" fx:id="gameBoard">
                 <center>
-                    <GridPane fx:id="gamePanel" hgap="1" vgap="1" layoutY="30" layoutX="40"/>
+                    <GridPane fx:id="gamePanel" hgap="0" vgap="0" layoutY="30" layoutX="40"/>
                 </center>
             </BorderPane>
+            <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
 
             <Group fx:id="groupNotification" layoutX="14" layoutY="203">
                 <VBox alignment="CENTER">
@@ -44,8 +54,8 @@
             </Group>
         </Pane>
         <VBox spacing="20" alignment="CENTER" style="-fx-padding: 0 0 0 -70;">
-            <VBox fx:id="groupNext" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: white; -fx-border-width: 2; -fx-padding: 10;">
-                 <Label text="NEXT" textFill="WHITE" style="-fx-font-size: 20px;"/>
+            <VBox fx:id="groupNext" alignment="TOP_CENTER" minHeight="120" prefHeight="120" maxHeight="120" minWidth="150" prefWidth="150" maxWidth="150" style="-fx-border-color: #FFD700; -fx-border-width: 2; -fx-padding: 10; -fx-background-color: rgba(0, 0, 0, 0.5);">
+                 <Label text="NEXT" textFill="#FFD700" style="-fx-font-size: 20px;"/>
                  <StackPane VBox.vgrow="ALWAYS" alignment="CENTER">
                      <GridPane fx:id="nextPanel" vgap="1" hgap="1" alignment="CENTER"/>
                  </StackPane>

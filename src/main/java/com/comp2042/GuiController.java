@@ -68,6 +68,7 @@ public class GuiController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Font.loadFont(getClass().getClassLoader().getResource("digital.ttf").toExternalForm(), 38);
+        Font.loadFont(getClass().getClassLoader().getResource("VT323.ttf").toExternalForm(), 38);
         gamePanel.setFocusTraversable(true);
         gamePanel.requestFocus();
         gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -240,7 +241,7 @@ public class GuiController implements Initializable {
         for (int i = 0; i < brick.getBrickData().length; i++) {
             for (int j = 0; j < brick.getBrickData()[i].length; j++) {
                 Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
-                rectangle.setFill(ColorMapper.getFillColor(brick.getBrickData()[i][j]));
+                setRectangleStyle(brick.getBrickData()[i][j], rectangle);
                 rectangles[i][j] = rectangle;
                 brickPanel.add(rectangle, j, i);
             }
@@ -278,7 +279,7 @@ public class GuiController implements Initializable {
         for (int i = 0; i < holdData.length; i++) {
             for (int j = 0; j < holdData[i].length; j++) {
                 Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
-                rectangle.setFill(ColorMapper.getFillColor(holdData[i][j]));
+                setRectangleStyle(holdData[i][j], rectangle);
                 holdPanel.add(rectangle, j, i);
             }
         }
@@ -292,7 +293,7 @@ public class GuiController implements Initializable {
         for (int i = 0; i < nextData.length; i++) {
             for (int j = 0; j < nextData[i].length; j++) {
                 Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
-                rectangle.setFill(ColorMapper.getFillColor(nextData[i][j]));
+                setRectangleStyle(nextData[i][j], rectangle);
                 nextPanel.add(rectangle, j, i);
             }
         }
@@ -337,9 +338,17 @@ public class GuiController implements Initializable {
     }
 
     private void setRectangleStyle(int color, Rectangle rectangle) {
-        rectangle.setFill(ColorMapper.getFillColor(color));
+        javafx.scene.paint.Paint fill = ColorMapper.getFillColor(color);
+        rectangle.setFill(fill);
         rectangle.setArcHeight(9);
         rectangle.setArcWidth(9);
+        if (color != 0) {
+            rectangle.setStroke(Color.BLACK);
+            rectangle.setStrokeWidth(2.0);
+            rectangle.setStrokeType(javafx.scene.shape.StrokeType.INSIDE);
+        } else {
+            rectangle.setStroke(Color.TRANSPARENT);
+        }
     }
 
     private void handleClearRow(ClearRow clearRow) {
