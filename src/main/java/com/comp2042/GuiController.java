@@ -123,10 +123,7 @@ public class GuiController implements Initializable {
                         && isGameOver.getValue() == Boolean.FALSE) {
                     DownData downData = eventListener.onHardDropEvent(new MoveEvent(EventType.DOWN, EventSource.USER));
                     if (downData.getClearRow() != null && downData.getClearRow().getLinesRemoved() > 0) {
-                        NotificationPanel notificationPanel = new NotificationPanel(
-                                "+" + downData.getClearRow().getScoreBonus());
-                        groupNotification.getChildren().add(notificationPanel);
-                        notificationPanel.showScore(groupNotification.getChildren());
+                        handleClearRow(downData.getClearRow());
                     }
                     refreshBrick(downData.getViewData());
                     keyEvent.consume();
@@ -345,14 +342,33 @@ public class GuiController implements Initializable {
         rectangle.setArcWidth(9);
     }
 
+    private void handleClearRow(ClearRow clearRow) {
+        if (clearRow != null && clearRow.getLinesRemoved() > 0) {
+            NotificationPanel scoreNotification = new NotificationPanel("+" + clearRow.getScoreBonus());
+            groupNotification.getChildren().add(scoreNotification);
+            scoreNotification.showScore(groupNotification.getChildren());
+
+            String labelText = null;
+            if (clearRow.getLinesRemoved() == 2) {
+                labelText = "Double!";
+            } else if (clearRow.getLinesRemoved() == 3) {
+                labelText = "Triple!";
+            } else if (clearRow.getLinesRemoved() >= 4) {
+                labelText = "Tetris!";
+            }
+
+            if (labelText != null) {
+                NotificationPanel textNotification = new NotificationPanel(labelText);
+                textNotification.setLayoutY(-40); // Move text above score
+                groupNotification.getChildren().add(textNotification);
+                textNotification.showScore(groupNotification.getChildren());
+            }
+        }
+    }
+
     private void moveDown(MoveEvent event) {
         DownData downData = eventListener.onDownEvent(event);
-        if (downData.getClearRow() != null && downData.getClearRow().getLinesRemoved() > 0) {
-            NotificationPanel notificationPanel = new NotificationPanel(
-                    "+" + downData.getClearRow().getScoreBonus());
-            groupNotification.getChildren().add(notificationPanel);
-            notificationPanel.showScore(groupNotification.getChildren());
-        }
+        handleClearRow(downData.getClearRow());
         refreshBrick(downData.getViewData());
         gamePanel.requestFocus();
     }
