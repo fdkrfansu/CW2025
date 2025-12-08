@@ -86,6 +86,11 @@ public class GuiController implements Initializable {
                         refreshBrick(eventListener.onRotateEvent(new MoveEvent(EventType.ROTATE, EventSource.USER)));
                         keyEvent.consume();
                     }
+                    if (keyEvent.getCode() == KeyCode.CONTROL) {
+                        refreshBrick(eventListener
+                                .onRotateAntiClockwiseEvent(new MoveEvent(EventType.ROTATE, EventSource.USER)));
+                        keyEvent.consume();
+                    }
                     if (keyEvent.getCode() == KeyCode.DOWN || keyEvent.getCode() == KeyCode.S) {
                         moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
                         keyEvent.consume();

@@ -10,6 +10,8 @@ public interface InputEventListener {
 
     ViewData onRotateEvent(MoveEvent event);
 
+    ViewData onRotateAntiClockwiseEvent(MoveEvent event);
+
     ViewData onHoldEvent(MoveEvent event);
 
     DownData onHardDropEvent(MoveEvent event);

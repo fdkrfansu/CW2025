@@ -112,6 +112,12 @@ public class GameController implements InputEventListener {
     }
 
     @Override
+    public ViewData onRotateAntiClockwiseEvent(MoveEvent event) {
+        board.rotateRightBrick();
+        return board.getViewData();
+    }
+
+    @Override
     public void createNewGame() {
         board.newGame();
         lastScoreCheck = 0;

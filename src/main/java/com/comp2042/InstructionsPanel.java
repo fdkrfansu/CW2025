@@ -21,6 +21,7 @@ public class InstructionsPanel extends BorderPane {
                         "• ← / A - Move Left\n" +
                         "• → / D - Move Right\n" +
                         "• ↓ / S - Drop Faster\n" +
+                        "• CTRL - Rotate Anti-Clockwise\n" +
                         "• SPACE - Hard Drop\n" +
                         "• SHIFT - Hold Block\n" +
                         "• ESC - Pause\n" +

@@ -13,6 +13,12 @@ public class BrickRotator {
         return new NextShapeInfo(brick.getShapeMatrix().get(nextShape), nextShape);
     }
 
+    public NextShapeInfo getPreviousShape() {
+        int nextShape = currentShape;
+        nextShape = (currentShape - 1 + brick.getShapeMatrix().size()) % brick.getShapeMatrix().size();
+        return new NextShapeInfo(brick.getShapeMatrix().get(nextShape), nextShape);
+    }
+
     public int[][] getCurrentShape() {
         return brick.getShapeMatrix().get(currentShape);
     }
