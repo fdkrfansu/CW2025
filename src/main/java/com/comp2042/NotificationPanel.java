@@ -14,7 +14,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+/**
+ * A temporary floating panel for displaying notifications or score bonuses.
+ * Applies a fade and translate animation to the text before removing itself
+ * from the scene.
+ */
 public class NotificationPanel extends BorderPane {
+
+    /**
+     * Creates a new notification panel with the specified text.
+     *
+     * @param text The message to display (e.g., "Tetris!", "+100").
+     */
 
     public NotificationPanel(String text) {
         setMinHeight(200);

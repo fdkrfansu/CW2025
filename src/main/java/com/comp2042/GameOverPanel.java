@@ -8,6 +8,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Represents the screen displayed when the game ends.
+ * Shows the "Game Over" text, a thematic message ("Too spicy for you?"), and
+ * options to start a new game or exit.
+ */
 public class GameOverPanel extends BorderPane {
 
     private final Button newGameButton;

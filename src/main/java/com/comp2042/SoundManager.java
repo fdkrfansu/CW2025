@@ -3,6 +3,12 @@ package com.comp2042;
 import javafx.scene.media.AudioClip;
 import java.net.URL;
 
+/**
+ * Singleton class responsible for managing audio playback in the game.
+ * Handles loading and playing of sound effects (e.g., line clears) and
+ * background music.
+ * Ensures only one instance of the sound manager exists.
+ */
 public class SoundManager {
 
     private static SoundManager instance;

@@ -11,6 +11,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Represents the main menu of the game.
+ * Displays the title, navigation buttons (Play, Controls, Exit), and localized
+ * plate background.
+ * Uses a BorderPane layout with a StackPane for layering background elements.
+ */
 public class MainMenuPanel extends BorderPane {
 
     private final Button playButton;

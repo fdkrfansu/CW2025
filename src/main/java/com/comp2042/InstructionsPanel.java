@@ -8,6 +8,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Displays the game controls and key bindings.
+ * Provides a reference for players to understand how to move, rotate, and
+ * interact with the game.
+ * Includes a "Back" button to return to the previous menu.
+ */
 public class InstructionsPanel extends BorderPane {
 
     private final Button backButton;

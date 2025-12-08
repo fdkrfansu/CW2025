@@ -7,6 +7,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Represents the pause overlay screen.
+ * Appears when the game is paused, offering options to Resume, View Controls,
+ * or Exit to Main Menu.
+ * features a semi-transparent dark background for better visibility over the
+ * game board.
+ */
 public class PauseMenuScreen extends BorderPane {
 
     private final Button resumeButton;

@@ -20,6 +20,13 @@ import javafx.scene.text.Font;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controls the Graphical User Interface (GUI) of the game.
+ * Manages the JavaFX scene, handles user input (keyboard), and updates the
+ * visual state
+ * of the game board, standard HUD panels (Score, Next, Hold), and overlay
+ * menus.
+ */
 public class GuiController implements Initializable {
 
     private static final int BRICK_SIZE = 20;
@@ -69,6 +76,16 @@ public class GuiController implements Initializable {
     private final BooleanProperty isGameOver = new SimpleBooleanProperty();
 
     @Override
+    /**
+     * Initializes the controller class.
+     * Loads custom fonts, sets up input event handling (keyboard listeners),
+     * and initializes the standard UI panels (Game Over, Pause, Main Menu).
+     *
+     * @param location  The location used to resolve relative paths for the root
+     *                  object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if
+     *                  the root object was not localized.
+     */
     public void initialize(URL location, ResourceBundle resources) {
         Font.loadFont(getClass().getClassLoader().getResource("digital.ttf").toExternalForm(), 38);
         Font.loadFont(getClass().getClassLoader().getResource("VT323.ttf").toExternalForm(), 38);
@@ -236,6 +253,13 @@ public class GuiController implements Initializable {
         reflection.setTopOffset(-12);
     }
 
+    /**
+     * Sets up the initial visual state of the game board.
+     * Creates the grid of rectangles for the board and the upcoming bricks.
+     *
+     * @param boardMatrix The initial 2D array representing the board state.
+     * @param brick       The initial view data for the current brick.
+     */
     public void initGameView(int[][] boardMatrix, ViewData brick) {
         displayMatrix = new Rectangle[boardMatrix.length][boardMatrix[0].length];
         for (int i = 2; i < boardMatrix.length; i++) {
@@ -309,6 +333,12 @@ public class GuiController implements Initializable {
         }
     }
 
+    /**
+     * Updates the visual representation of the current, hold, and next bricks.
+     * Also updates the "Ghost Brick" to show the landing position.
+     *
+     * @param brick The current ViewData containing brick positions and shapes.
+     */
     public void refreshBrick(ViewData brick) {
         if (isPause.getValue() == Boolean.FALSE) {
             brickPanel.setLayoutX(gamePanel.getLayoutX() + brick.getxPosition() * brickPanel.getVgap()
@@ -361,6 +391,14 @@ public class GuiController implements Initializable {
         }
     }
 
+    /**
+     * Handles the visual effects when rows are cleared.
+     * Plays the clear sound, shows floating score notifications, and updates the
+     * score display.
+     *
+     * @param clearRow The data object containing details about the cleared lines
+     *                 and score bonus.
+     */
     private void handleClearRow(ClearRow clearRow) {
         if (clearRow != null && clearRow.getLinesRemoved() > 0) {
             // Play sound effect
@@ -418,6 +456,13 @@ public class GuiController implements Initializable {
         isGameOver.setValue(Boolean.TRUE);
     }
 
+    /**
+     * Starts a new game session.
+     * Resets the game state, clears UI overlays, and focuses the game panel.
+     *
+     * @param actionEvent The event that triggered the new game (e.g., button
+     *                    click).
+     */
     public void newGame(ActionEvent actionEvent) {
         gameOverPanel.setVisible(false);
         eventListener.createNewGame();

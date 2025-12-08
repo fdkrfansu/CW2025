@@ -1,5 +1,12 @@
 package com.comp2042;
 
+/**
+ * Manages the core game logic and loop.
+ * Connects the data model (Board) with the view (GuiController).
+ * Handles the game timer, gravity (automatic drop), score-based difficulty
+ * progression,
+ * and high-level event processing (move, rotate, drop).
+ */
 public class GameController implements InputEventListener {
 
     private Board board = new SimpleBoard(25, 10);

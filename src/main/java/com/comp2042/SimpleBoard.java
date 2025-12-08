@@ -6,6 +6,12 @@ import com.comp2042.logic.bricks.RandomBrickGenerator;
 
 import java.awt.*;
 
+/**
+ * Represents the logical state of the Tetris board.
+ * manages the grid matrix, active brick, collision detection, and line clearing
+ * logic.
+ * Also handles the "Hold" mechanic and tracks the game score and lines cleared.
+ */
 public class SimpleBoard implements Board {
 
     private final int width;

@@ -3,8 +3,20 @@ package com.comp2042;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
+/**
+ * Utility class to map BrickType IDs to JavaFX Paint objects.
+ * Defines the color palette for the "Ayam Gepuk" theme, assigning specific
+ * food-themed colors to different tetromino shapes.
+ */
 public class ColorMapper {
 
+    /**
+     * Returns the color associated with a given brick type ID.
+     *
+     * @param i The integer representation of the BrickType.
+     * @return The Paint object (Color) for the brick, or TRANSPARENT for empty
+     *         spaces.
+     */
     public static Paint getFillColor(int i) {
         Paint returnPaint;
         switch (BrickType.fromValue(i)) {
